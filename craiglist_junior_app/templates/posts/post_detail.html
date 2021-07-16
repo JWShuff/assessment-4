@@ -19,11 +19,13 @@
     New Post Button
   </a>
   <a class="nav-link btn btn-outline-success" href="{% url 'edit_post' category_id=category.id post_id=post.id %}">
-    Edit Post Button
+    Edit Post
   </a>
-  <a class="nav-link btn btn-danger" href="{% url 'delete_post' category_id=category.id post_id=post.id %}">
-    Delete Post Button
-  </a>
+<form class='nav-item btn btn-outline-danger' name="delete_post" method="POST"
+  action="{% url 'delete_post' post_id=post.id category_id=category.id %}">
+  {% csrf_token %}
+  <input class='btn btn-danger' type="submit" value="Delete Post" />
+</form>
 </nav>
 {% endblock main-content %}
 
