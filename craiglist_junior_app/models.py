@@ -8,7 +8,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE(), related_name='posts')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1024)
 
