@@ -1,0 +1,9 @@
+{% load static %}
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2 class="bg-dark text-light"> Hi There! </h2>
+<img src="{% static 'images/home.jpg' %}">
+{% endblock %}

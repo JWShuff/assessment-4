@@ -1,0 +1,20 @@
+[
+  {
+    "model": "craigslist_junior_app.Category",
+    "pk":1,
+    "fields": {
+      "name": "",
+      "description":""
+    }
+  },
+
+  {
+    "model": "craigslist_junior_app.Post",
+    "pk":1,
+    "fields":{
+      "title": "",
+      "content": "",
+      "category": 1
+    }
+  }
+]
