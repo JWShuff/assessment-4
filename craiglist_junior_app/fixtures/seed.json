@@ -1,20 +1,57 @@
-[
-  {
-    "model": "craigslist_junior_app.Category",
-    "pk":1,
+[{
+    "model": "craiglist_junior_app.Category",
+    "pk": 1,
     "fields": {
-      "name": "",
-      "description":""
+      "name": "Cars",
+      "description": "Cars, parts, modifications, etc"
     }
   },
 
   {
-    "model": "craigslist_junior_app.Post",
-    "pk":1,
-    "fields":{
-      "title": "",
-      "content": "",
+    "model": "craiglist_junior_app.Category",
+    "pk": 2,
+    "fields": {
+      "name": "Books",
+      "description": "Literature, magazines, and other eminently readable items."
+    }
+  },
+
+  {
+    "model": "craiglist_junior_app.Category",
+    "pk": 3,
+    "fields": {
+      "name": "Bikes",
+      "description": "Trail, road, hybrid, bikes, parts, and the people who collect them"
+    }
+  },
+
+  {
+    "model": "craiglist_junior_app.Post",
+    "pk": 1,
+    "fields": {
+      "title": "Great Car 4 Sale",
+      "content": "I got this car and I wanna sell it. Drop me a line? How I dunno, not gonna leave my phone number here.",
       "category": 1
+    }
+  },
+
+  {
+    "model": "craiglist_junior_app.Post",
+    "pk": 2,
+    "fields": {
+      "title": "Estate Book Sale",
+      "content": "I found all these books going through my family's estate. Me no read good, please buy.",
+      "category": 2
+    }
+  },
+
+  {
+    "model": "craiglist_junior_app.Post",
+    "pk": 3,
+    "fields": {
+      "title": "Totally Not Stolen Bicycle",
+      "content": "It fell off the back of a truck, alright? Don't ask questions you don't want the answers to. And no, those aren't teeth in the handlebar.",
+      "category": 3
     }
   }
 ]
