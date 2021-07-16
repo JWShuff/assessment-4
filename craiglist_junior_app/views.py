@@ -65,16 +65,27 @@ def new_post(request, category_id):
             post.save()
             return redirect('post_detail', post_id=post.id, category_id=category.id)
     else:
-        initial_form = {'title':'Post title here', 'content':'Write your post here', 'category':category} 
+        initial_form = {
+            'title':'Post title here',
+            'content':'Write your post here', 
+            'category':category} 
         form = PostForm(initial = initial_form)
-    
-
     return render(request,'posts/post_form.html', {'form':form, 'type_of_request':'New'})
 
         
 
 def edit_post(request, category_id, post_id):
-    return HttpResponse("Edit Post Form!")
+    category = get_category(category_id)
+    post = get_post(post_id)
+    if request.method=="POST":
+        form=PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('post_detail', post_id = post.id, category_id=category.id)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'posts/post_form.html', {'form': form, 'type_of_request':"Edit"})
 
 def delete_post(request, category_id, post_id):
     return HttpResponse("Delete Post Success")

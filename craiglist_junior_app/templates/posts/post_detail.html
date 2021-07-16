@@ -5,7 +5,7 @@
 
 {% block main-content %}
 
-<h2> {{ category.name }} </h2>
+<a class="btn btn-outline-info" href="{% url 'category_detail' category_id=category.id %}">Return to {{ category.name }} </a>
 <h3>
   {{ post.title }}
 </h3>
