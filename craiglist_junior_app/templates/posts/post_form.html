@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% if type_of_request == "New" %}
+New Post in Category: {{ category.name }}
+{% else %}
+Update Post ID: {{ post.id }}
+{% endif %}
+
+{% endblock title %}
+
+{% block main-content %}
+<h2>{{ type_of_request }} Post </h2>
+<form method="POST">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <button type="submit">
+
+    {% if type_of_request == 'New' %}
+    Add Post
+    {% else %}
+    Update Post
+    {% endif %}
+  </button>
+</form>
+
+{% endblock main-content %}
+
+{% block bottom-nav %}
+
+<a class='nav-item btn btn-warning' href="{% url 'home' %}">
+  Home
+</a>
+{% endblock bottom-nav %}

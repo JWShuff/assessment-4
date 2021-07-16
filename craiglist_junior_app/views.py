@@ -46,12 +46,32 @@ def delete_category(request, category_id):
     return redirect('home')
 
 # Post Methods
+def post_detail(request, category_id, post_id):
+    try:
+        post = get_post(post_id)
+        category=get_category(category_id)
+    except:
+        return HttpResponse(f"Post with ID {post_id} does not exist.")
+    return render(request, 'posts/post_detail.html', {'post':post, 'category':category})
+    
 
 def new_post(request, category_id):
-    return HttpResponse("New Post Form!")
+    category = get_category(category_id)
+    if request.method=="POST":
+        form=PostForm(request.POST)
+        if form.is_valid():
+            post=form.save(commit=False)
+            post.category = category
+            post.save()
+            return redirect('post_detail', post_id=post.id, category_id=category.id)
+    else:
+        initial_form = {'title':'Post title here', 'content':'Write your post here', 'category':category} 
+        form = PostForm(initial = initial_form)
+    
 
-def post_detail(request, category_id, post_id):
-    return HttpResponse("Post Detail Form!")
+    return render(request,'posts/post_form.html', {'form':form, 'type_of_request':'New'})
+
+        
 
 def edit_post(request, category_id, post_id):
     return HttpResponse("Edit Post Form!")

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block main-content %}
+
+<h2> {{ category.name }} </h2>
+<h3>
+  {{ post.title }}
+</h3>
+
+<h4>
+  {{ post.content }}
+</h4>
+
+<nav class="navbar bg-dark">
+  <a class="nav-link btn btn-outline-warning" href="{% url 'new_post' category_id=category.id %}">
+    New Post Button
+  </a>
+  <a class="nav-link btn btn-outline-success" href="{% url 'edit_post' category_id=category.id post_id=post.id %}">
+    Edit Post Button
+  </a>
+  <a class="nav-link btn btn-danger" href="{% url 'delete_post' category_id=category.id post_id=post.id %}">
+    Delete Post Button
+  </a>
+</nav>
+{% endblock main-content %}
+
+
+{% block bottom-nav %}
+<a class='nav-item btn btn-warning' href="{% url 'new_category' %}">
+  New Category
+</a>
+<a class='nav-item btn btn-success' href="{% url 'edit_category' category_id=category.id %}">
+  Edit Category
+</a>
+<form class='nav-item btn btn-outline-danger' name="delete_category" method="POST"
+  action="{% url 'delete_category' category_id=category.id %}">
+  {% csrf_token %}
+  <input class='btn btn-danger' type="submit" value="Delete Category" />
+</form>
+
+{% endblock bottom-nav %}
