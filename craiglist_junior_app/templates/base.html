@@ -1,30 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> 
-  {% block title-block %}
-  Base Title  
-  {% endblock title-block %}
-  </title>
-</head>
-<body>
-  
-  {% block top-nav %}
-    Top
-  {% endblock top-nav %}
-    
-  
-  {% block main-content %}
-    Main
-  {% endblock main-content %}
-  
-  {% block bottom-nav %}
-    Bottom
-  {% endblock bottom-nav %}
-    
-    
-</body>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>
+      {% block title-block %}
+      Base Title
+      {% endblock title-block %}
+    </title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+      <a class="navbar-brand btn btn-info" href="{% url 'home' %}">Home</a>
+      {% block top-nav %}
+      {% endblock top-nav %}
+    </nav>
+
+    <div class="content container">
+      <div class="row">
+        {% block main-content %}
+        Main
+        {% endblock main-content %}
+      </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+      {% block bottom-nav %}
+      Bottom
+      {% endblock bottom-nav %}
+    </nav>
+
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+  </body>
 </html>
