@@ -12,7 +12,8 @@ urlpatterns = [
     path('new/', views.new_category, name='new_category'),
     # - `/categories/:category_id/edit`: A page with a form to update a specific category, with current values filled in already. Also include the ability to delete the specific category here. 
     path('<int:category_id>/edit/', views.edit_category, name='edit_category'),
-
+    # Path to POST a delete for a category:
+    path('<int:category_id>/delete/', views.delete_category, name='delete_category'),
     # - `/categories/:category_id/posts/new`: A page with a form to create a new post, under the current category by default.
     path('<int:category_id>/posts/new', views.new_post, name='new_post'),
     # - `/categories/:category_id/posts/:post_id`: A page to view the detail of a specific post. Also include the ability go back to the parent category detail page (`/categories/:category_id/`)

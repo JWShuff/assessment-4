@@ -32,5 +32,10 @@ New Post Button
 <a class='nav-item btn btn-warning' href="{% url 'edit_category' category_id=category.id %}">
   Edit Category
 </a>
-Edit Category Button
+<form class='nav-item btn btn-outline-danger' name="delete_category" method="POST"
+  action="{% url 'delete_category' category_id=category.id %}">
+  {% csrf_token %}
+  <input class='btn btn-danger' type="submit" value="Delete Category" />
+</form>
+
 {% endblock bottom-nav %}

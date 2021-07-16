@@ -35,9 +35,15 @@ def edit_category(request, category_id):
             category=form.save(commit=False)
             category.save()
             return redirect('category_detail', category_id=category.id)
+    else:
+        form=CategoryForm(instance=category)
+    return render(request, 'categories/category_form.html', {'form':form, 'type_of_request':"Edit"})
 
 def delete_category(request, category_id):
-    pass
+    if request.method=='POST':
+        category=get_category(category_id)
+        category.delete()
+    return redirect('home')
 
 # Post Methods
 
