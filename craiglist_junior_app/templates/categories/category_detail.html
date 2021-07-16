@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ category.name }} {% endblock %}
+
+{% block main-content %}
+
+<h2> {{ category.name }} </h2>
+<h4> {{ category.description }}</h4>
+
+<ul>
+  {% for post in category.posts.all %}
+  <li>
+    <a href="{% url 'post_detail' post_id=post.id category_id=category.id %}">
+      {{ post.title }}
+    </a>
+    <p>
+      {{ post.content }}
+    </p>
+  </li>
+  {% endfor %}
+
+</ul>
+New Post Button
+{% endblock main-content %}
+
+
+{% block bottom-nav %}
+<a class='nav-item btn btn-warning' href="{% url 'new_category' %}">
+  New Category
+</a>
+<a class='nav-item btn btn-warning' href="{% url 'edit_category' category_id=category.id %}">
+  Edit Category
+</a>
+Edit Category Button
+{% endblock bottom-nav %}
