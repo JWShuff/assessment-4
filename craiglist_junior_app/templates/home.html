@@ -3,7 +3,19 @@
 
 {% block title %}Home{% endblock %}
 
-{% block content %}
-<h2 class="bg-dark text-light"> Hi There! </h2>
-<img src="{% static 'images/home.jpg' %}">
-{% endblock %}
+{% block main-content %}
+
+{% for category in categories %}
+  <a href="{% url 'category_detail' category_id=category.id %}">
+    {{ category.name }}
+  </a>
+  {{ category.description }}
+{% endfor %}
+{% endblock main-content %}
+
+
+{% block bottom-nav %}
+  Edit Button
+
+{% endblock bottom-nav %}
+  
