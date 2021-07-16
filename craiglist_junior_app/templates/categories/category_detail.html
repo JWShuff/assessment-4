@@ -21,7 +21,11 @@
   {% endfor %}
 
 </ul>
-New Post Button
+<nav class="navbar bg-dark">
+  <a class="nav-link btn btn-outline-warning" href="{% url 'new_post' category_id=category.id %}">
+    New Post Button
+  </a>
+</nav>
 {% endblock main-content %}
 
 

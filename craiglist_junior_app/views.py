@@ -47,15 +47,15 @@ def delete_category(request, category_id):
 
 # Post Methods
 
-def new_post(request):
-    pass
+def new_post(request, category_id):
+    return HttpResponse("New Post Form!")
 
 def post_detail(request, category_id, post_id):
-    pass
+    return HttpResponse("Post Detail Form!")
 
 def edit_post(request, category_id, post_id):
-    pass
+    return HttpResponse("Edit Post Form!")
 
 def delete_post(request, category_id, post_id):
-    pass
+    return HttpResponse("Delete Post Success")
 

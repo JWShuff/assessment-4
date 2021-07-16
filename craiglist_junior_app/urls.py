@@ -20,5 +20,6 @@ urlpatterns = [
     path('<int:category_id>/posts/<int:post_id>/', views.post_detail, name='post_detail'),
     # - `/categories/:category_id/posts/:post_id/edit`: A page with a form to update a specific post, with current values filled in already. Also include the ability to delete the specific post here.
     path('<int:category_id>/posts/<int:post_id>/edit/', views.edit_post, name='edit_post'),
+    path('<int:category_id>/posts/<int:post_id>/edit/', views.delete_post,name='delete_post'),
 ]
 
