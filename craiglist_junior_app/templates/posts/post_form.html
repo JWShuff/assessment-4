@@ -11,6 +11,13 @@ Update Post ID: {{ post.id }}
 {% endblock title %}
 
 {% block main-content %}
+{% if type_of_request == 'Edit' %}
+<form class='nav-item btn btn-outline-danger' name="delete_post" method="POST"
+  action="{% url 'delete_post' category_id=category.id post_id=post.id %}">
+  {% csrf_token %}
+  <input class='btn btn-danger' type="submit" value="Delete Post" />
+</form>
+{% endif %}
 <h2>{{ type_of_request }} Post </h2>
 <form method="POST">
   {% csrf_token %}
@@ -25,13 +32,14 @@ Update Post ID: {{ post.id }}
     Update Post
     {% endif %}
   </button>
+
 </form>
 
 {% endblock main-content %}
 
 {% block bottom-nav %}
 
-<a class='nav-item btn btn-warning' href="{% url 'home' %}">
-  Home
+<a class='nav-item btn btn-warning' href="{% url 'category_detail' category_id=category.id %}">
+  Back to {{ category.name }}
 </a>
 {% endblock bottom-nav %}
